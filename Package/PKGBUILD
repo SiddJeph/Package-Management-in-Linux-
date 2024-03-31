@@ -1,0 +1,24 @@
+# PKGBUILD file for Rock-Paper-Scissors game
+
+pkgname=rock-paper-scissors
+pkgver=1.0
+pkgrel=1
+pkgdesc="rock-paper-scissors game written in C"
+arch=('any')
+url="https://github.com/SiddJeph/rock-paper-scissors.git"
+license=('MIT')
+depends=('gcc')
+
+source=("rock_paper_scissors.c")
+sha256sums=('SKIP')
+build() {
+	cd "${srcdir}"
+	gcc -o rock_paper_scissors rock_paper_scissors.c
+}
+
+package() {
+	cd "${srcdir}"
+	mkdir -p "${pkgdir}/usr/bin"
+	cp rock_paper_scissors "${pkgdir}/usr/bin/"
+	chmod +x "${pkgdir}/usr/bin/rock_paper_scissors"
+}
